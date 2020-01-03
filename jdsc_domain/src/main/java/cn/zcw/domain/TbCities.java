@@ -1,8 +1,11 @@
 package cn.zcw.domain;
+
+import java.io.Serializable;
+
 /**
  * 生成城市类
  */
-public class TbCities {
+public class TbCities implements Serializable {
     private Integer id;
 
     private String cityid;

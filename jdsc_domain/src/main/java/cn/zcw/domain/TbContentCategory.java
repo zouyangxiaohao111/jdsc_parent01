@@ -1,6 +1,8 @@
 package cn.zcw.domain;
 
-public class TbContentCategory {
+import java.io.Serializable;
+
+public class TbContentCategory implements Serializable {
     private Long id;
 
     private String name;

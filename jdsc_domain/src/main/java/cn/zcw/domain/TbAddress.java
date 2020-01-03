@@ -1,11 +1,12 @@
 package cn.zcw.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * 生成地址类
  */
-public class TbAddress {
+public class TbAddress implements Serializable {
     private Long id;
 
     private String userId;

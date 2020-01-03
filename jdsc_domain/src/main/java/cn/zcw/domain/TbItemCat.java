@@ -1,6 +1,8 @@
 package cn.zcw.domain;
 
-public class TbItemCat {
+import java.io.Serializable;
+
+public class TbItemCat implements Serializable {
     private Long id;
 
     private Long parentId;

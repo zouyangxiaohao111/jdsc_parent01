@@ -1,8 +1,11 @@
 package cn.zcw.domain;
+
+import java.io.Serializable;
+
 /**
  * 生成地域类
  */
-public class TbAreas {
+public class TbAreas implements Serializable {
     private Integer id;
 
     private String areaid;
