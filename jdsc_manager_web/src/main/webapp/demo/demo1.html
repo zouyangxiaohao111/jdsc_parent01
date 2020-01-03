@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo1</title>
+    <script src="../plugins/angularjs/angular.min.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module("oneApp",[]);
+        app.controller("myController",function ($scope) {
+            $scope.username = 'nihao';
+            $scope.password1 = "123456";
+        })
+
+
+    </script>
+</head>
+<body ng-app="oneApp" ng-controller="myController">
+
+    <input ng-model="username" type="text">
+    <br>
+    {{username}}
+    <input type="text" ng-model="password1">
+    <br>
+    {{password1}}
+</body>
+</html>
