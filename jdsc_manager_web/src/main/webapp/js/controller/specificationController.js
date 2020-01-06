@@ -60,13 +60,14 @@ app.controller("specificationController",function($scope,$controller,$http){
     $scope.dele = function(){
         // 判断是否选择了元素
         if($scope.selectIds.length == 0){
+            alert("至少选择一项!");
             return;
         }
 
         // 确认框
         if(window.confirm("确定删除吗")){
             // 发送请求，删除数据
-            $http.get("../specification/delete?ids="+$scope.selectIds).success(function(resp){
+            $http.get("../specification/delete/"+$scope.selectIds).success(function(resp){
                 if(resp.success){
                     // 重新刷新数据
                     $scope.reloadList();

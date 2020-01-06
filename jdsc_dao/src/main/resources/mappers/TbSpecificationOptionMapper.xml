@@ -36,6 +36,7 @@
       </foreach>
     </where>
   </sql>
+
   <sql id="Update_By_Example_Where_Clause">
     <where>
       <foreach collection="example.oredCriteria" item="criteria" separator="or">
@@ -65,9 +66,11 @@
       </foreach>
     </where>
   </sql>
+
   <sql id="Base_Column_List">
     id, option_name, spec_id, orders
   </sql>
+
   <select id="selectByExample" parameterType="cn.zcw.domain.TbSpecificationOptionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -82,16 +85,19 @@
       order by ${orderByClause}
     </if>
   </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tb_specification_option
     where id = #{id,jdbcType=BIGINT}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from tb_specification_option
     where id = #{id,jdbcType=BIGINT}
   </delete>
+
   <delete id="deleteByExample" parameterType="cn.zcw.domain.TbSpecificationOptionExample">
     delete from tb_specification_option
     <if test="_parameter != null">
