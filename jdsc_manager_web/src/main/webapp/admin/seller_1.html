@@ -71,7 +71,7 @@
 			                      </thead>
 			                      <tbody>
 			                          <tr ng-repeat="pojo in list">
-			                              <td><input  type="checkbox"></td>			                              
+			                              <td><input  ng-click="updateSelection($event,pojo.id)" type="checkbox" ng-checked="selectIds.includes(pojo.id)"></td>
 				                          <td>{{pojo.sellerId}}</td>
 									      <td>{{pojo.name}}</td>
 									      <td>{{pojo.nickName}}</td>

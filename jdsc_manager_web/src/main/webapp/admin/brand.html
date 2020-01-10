@@ -81,9 +81,9 @@
             // 查询所有数据的方法
             $scope.findAll = function () {
                 // 发送异步的请求
-                $http.get("../brand/findAll").success(function(data){
+                $http.get("../brand/findAll").success(function(resp){
                     // 存入$scope域
-                    $scope.brandList = data;
+                    $scope.brandList = resp.data;
                 });
             }
 

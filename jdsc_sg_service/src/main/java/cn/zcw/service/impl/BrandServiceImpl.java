@@ -9,7 +9,10 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 商品服务接口实现类
@@ -85,6 +88,20 @@ public class BrandServiceImpl implements BrandService {
         for (Long id : ids) {
             brandMapper.delete(id);
         }
+    }
+
+    @Override
+    public List<Map<String, Object>> findBrandList() {
+        List<Brand> list = brandMapper.findAll();
+        List<Map<String, Object>> mapList = new ArrayList<>();
+        for (Brand brand : list) {
+            Map<String,Object> map = new HashMap<>();
+            map.put("id",brand.getId());
+            map.put("text",brand.getName());
+            mapList.add(map);
+        }
+        return mapList;
+
     }
 
 

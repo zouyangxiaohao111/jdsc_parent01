@@ -29,7 +29,7 @@
     <!-- 引用dubbo服务 -->
     <dubbo:application name="jdsc-manager-web" />
     <!--dubbo服务地址-->
-    <dubbo:registry address="zookeeper://192.168.25.130:2181"/>
+    <dubbo:registry address="zookeeper://192.168.25.129:2181"/>
     <!--扫描controller的包结构-->
     <dubbo:annotation package="cn.zcw.controller" />
 

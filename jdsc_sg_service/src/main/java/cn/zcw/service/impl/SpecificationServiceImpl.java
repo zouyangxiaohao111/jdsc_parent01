@@ -13,7 +13,10 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 规格服务接口实现类
@@ -139,6 +142,21 @@ public class SpecificationServiceImpl implements SpecificationService {
 
 
 
+    }
+
+
+
+    @Override
+    public List<Map<String, Object>> findSpecificationList() {
+        List<TbSpecification> list = tbSpecificationMapper.selectByExample(null);
+        List<Map<String, Object>> mapList = new ArrayList<>();
+        for (TbSpecification tbSpecification : list) {
+            Map<String,Object> map = new HashMap<>();
+            map.put("id",tbSpecification.getId());
+            map.put("text",tbSpecification.getSpecName());
+            mapList.add(map);
+        }
+        return mapList;
     }
 
 }

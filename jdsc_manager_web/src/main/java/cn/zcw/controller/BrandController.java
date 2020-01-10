@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 //RestController=@Controller + @ResponseBody
 //接受json格式数据
@@ -32,10 +33,11 @@ public class BrandController {
      *查询所有品牌信息
      */
     @RequestMapping("/findAll")
-    public List<Brand> findAll(){
+    public Result findAll(){
 
 //        底层为远程调用
-        return brandService.findAll();
+        List<Brand> brandList = brandService.findAll();
+        return new Result(true,"查询成功",brandList);
 
     }
     /**
@@ -132,4 +134,16 @@ public class BrandController {
             return new Result(true,"操作失败");
         }
     }
+    @RequestMapping("/findBrandList")
+    public Result findBrandList(){
+        try {
+            List<Map<String,Object>> mapList = brandService.findBrandList();
+            return new Result(true,"操作成功",mapList);
+        } catch (Exception e) {
+
+            return new Result(false,"操作失败");
+        }
+
+    }
+
 }

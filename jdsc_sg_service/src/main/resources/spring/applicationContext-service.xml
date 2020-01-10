@@ -13,7 +13,7 @@
     <!--注册到zookeeper中的服务的名称-->
     <dubbo:application name="jdsc_sg_service"/>
     <!--注册的地址-->
-    <dubbo:registry address="zookeeper://192.168.25.130:2181"/>
+    <dubbo:registry address="zookeeper://192.168.25.129:2181"/>
     <!--提供服务的类，同时也开启了注解扫描-->
     <dubbo:annotation package="cn.zcw.service.impl" />
     <!--连接zookeeper的连接超时时间-->

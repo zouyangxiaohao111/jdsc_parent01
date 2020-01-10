@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Map;
+
 
 /**
  * 规格管理模块
@@ -101,7 +104,7 @@ public class SpecificationController {
      * @return
      */
     @RequestMapping("/delete/{ids}")
-    public Result findOne(@PathVariable("ids") Long [] ids){
+    public Result delete(@PathVariable("ids") Long [] ids){
         try {
 //            调用interface层
             specificationService.delete(ids);
@@ -111,6 +114,19 @@ public class SpecificationController {
             return new Result(false,"操作失败");
         }
 
+    }
+    @RequestMapping("/findSpecificationList")
+    public Result findSpecificationList(){
+        try {
+//            调用interface层
+             List<Map<String, Object>> mapList;
+            mapList = specificationService.findSpecificationList();
+
+            return  new Result(true,"操作成功",mapList);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false,"操作失败");
+        }
     }
 
 
