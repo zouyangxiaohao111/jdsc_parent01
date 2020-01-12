@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
 //RestController=@Controller + @ResponseBody
 //接受json格式数据
 @RestController
@@ -129,5 +132,24 @@ public class TypeTemplateController {
             e.printStackTrace();
             return new Result(false, "删除失败");
         }
+    }
+    /**
+     * 获取所有
+     *
+     * @param
+     * @return
+     */
+    @RequestMapping("/findAll")
+    public Result findAll() {
+        try {
+//            从注册中心调取服务
+            List<TbTypeTemplate> list = typeTemplateService.findAll();
+            return new Result(true,"操作成功",list);
+        } catch (Exception e) {
+            e.printStackTrace();
+//            返回前端数据
+            return new Result(false,"操作失败");
+        }
+
     }
 }

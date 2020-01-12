@@ -92,4 +92,9 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
             typeTemplateMapper.deleteByPrimaryKey(id);
         }
     }
+
+    @Override
+    public List<TbTypeTemplate> findAll() {
+        return typeTemplateMapper.selectByExample(null);
+    }
 }
