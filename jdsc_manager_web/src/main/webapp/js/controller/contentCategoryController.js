@@ -1,9 +1,8 @@
 // 定义brancController
-app.controller("brandController",function($scope,$controller,$http){
+app.controller("categoryController",function($scope,$controller,$http){
 	
 	// controller的继承，本质就是共用一个$scope
 	$controller('baseController',{$scope:$scope});
-
     // 定义reloadList方法
     $scope.reloadList = function(){
         // 发送请求，分页查询数据
@@ -23,7 +22,7 @@ app.controller("brandController",function($scope,$controller,$http){
     };
 
 
-
+    $scope.grade=null;
     // 通过id查询一个对象方法
     $scope.findOne = function(id){
         // 通过主键查询
