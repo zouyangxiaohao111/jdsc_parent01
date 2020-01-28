@@ -12,7 +12,7 @@ app.controller("goodsController",function($scope,$controller,$http){
     // 加载数据的方法
     $scope.reloadList = function(){
         // 分页查询
-        $http.post("../goods/search/"+$scope.paginationConf.currentPage+"/"+$scope.paginationConf.itemsPerPage,$scope.searchEntity).success(function(resp){
+        $http.get("../goods/findPage/"+$scope.paginationConf.currentPage+"/"+$scope.paginationConf.itemsPerPage).success(function(resp){
             if(resp.success){
                 // 分页数据
                 $scope.list = resp.data;
@@ -25,13 +25,32 @@ app.controller("goodsController",function($scope,$controller,$http){
         });
     };
 
+    //删除
+    $scope.dele = function () {
+        //判断
+        if ($scope.selectIds.length == 0){
+            alert("至少选择一个!!");
+            return;
+        }
+        if (window.confirm("确定删除吗?")){
+            $http.get("../goods/delete/"+$scope.selectIds).success(function (resp) {
+                if (resp.success){
+                    $scope.reloadList();
+                }else {
+                    alert(resp.message);
+                }
+            })
+        }
+
+    }
+
     // 定义对象
     $scope.itemCatList = {};
 
     // 查询分类数据
     $scope.findAllItemCat = function(){
         // 查询数据
-        $http.get("../itemCat/findAllItemCat").success(function(resp){
+        $http.get("../itemCat/findAll").success(function(resp){
             if(resp.success){
                 // 进行组装数据
                 for (var i = 0; i < resp.data.length; i++) {
@@ -49,7 +68,7 @@ app.controller("goodsController",function($scope,$controller,$http){
         // 询问
         if(window.confirm("确定该操作吗")){
             // 审核通过或者驳回功能
-            $http.post("../goods/updateAuditStatus/"+status+"/"+$scope.selectIds).success(function(resp){
+            $http.get("../goods/updateAuditStatus/"+status+"/"+$scope.selectIds).success(function(resp){
                 if(resp.success){
                     $scope.reloadList();
                     $scope.selectIds=[];

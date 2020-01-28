@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-   	<!-- 解决post中文乱码过滤器 -->
+	<!-- 解决post中文乱码过滤器 -->
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -12,21 +12,21 @@
 			<param-name>encoding</param-name>
 			<param-value>utf-8</param-value>
 		</init-param>
-		<init-param>  
-            <param-name>forceEncoding</param-name>  
-            <param-value>true</param-value>  
-        </init-param>  
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping>	
+	</filter-mapping>
 
 	<!--配置前端控制器-->
-  	<servlet>
-  		<servlet-name>springmvc</servlet-name>
-  		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  		<!--加载类路径下的配置文件-->
+	<servlet>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!--加载类路径下的配置文件-->
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:spring/springmvc.xml</param-value>
@@ -34,9 +34,29 @@
 		<!--配置启动项-->
 		<load-on-startup>2</load-on-startup>
 	</servlet>
-  	<servlet-mapping>
-  		<servlet-name>springmvc</servlet-name>
-  		<url-pattern>/</url-pattern>
-  	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!--加载spring-security.xml的监听器-->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/spring-security.xml</param-value>
+	</context-param>
+
+	<!--springSecurity委派过滤器-->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	
 </web-app>
