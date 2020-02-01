@@ -30,8 +30,8 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<!--加载springmvc的配置文件，还加载spring-security.xml配置文件-->
-			<!--<param-value>classpath:spring/springmvc.xml,classpath:spring/spring-security.xml</param-value>-->
-			<param-value>classpath:spring/springmvc.xml</param-value>
+			<param-value>classpath:spring/springmvc.xml,classpath:spring/spring-security.xml</param-value>
+			<!--<param-value>classpath:spring/springmvc.xml</param-value>-->
 		</init-param>
 		<!--配置启动项-->
 		<load-on-startup>2</load-on-startup>
@@ -42,13 +42,13 @@
   	</servlet-mapping>
 
 	<!--springSecurity委派过滤器-->
-	<!--<filter>-->
-		<!--<filter-name>springSecurityFilterChain</filter-name>-->
-		<!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
-	<!--</filter>-->
-	<!--<filter-mapping>-->
-		<!--<filter-name>springSecurityFilterChain</filter-name>-->
-		<!--<url-pattern>/*</url-pattern>-->
-	<!--</filter-mapping>-->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 </web-app>
