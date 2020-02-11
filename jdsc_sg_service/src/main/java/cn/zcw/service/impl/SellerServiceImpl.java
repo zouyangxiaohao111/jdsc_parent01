@@ -101,6 +101,12 @@ public class SellerServiceImpl implements SellerService {
         // 修改
         tbSellerMapper.updateByPrimaryKey(seller);
     }
+
+    @Override
+    public void update(TbSeller seller, String sellerId) {
+        tbSellerMapper.updateByPrimaryKey(seller);
+    }
+
     /**
      * 分页条件查询
      * @param seller

@@ -13,8 +13,9 @@ public class IndexController {
      * 获取登录名
      * @return
      */
-    @RequestMapping("/findLoginname")
-    public Result findLoginname() {
+    @RequestMapping("/loadLoginName")
+    public Result loadLoginName() {
+
         String loginName = null;
         try {
             // 从SpringSecurity框架中获取登录名称
@@ -23,6 +24,7 @@ public class IndexController {
             SecurityContext context = SecurityContextHolder.getContext();
             // 获取用户名
             loginName = context.getAuthentication().getName();
+
             return new Result(true, "成功", loginName);
         } catch (Exception e) {
             e.printStackTrace();

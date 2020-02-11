@@ -41,8 +41,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         List<SimpleGrantedAuthority> list = new ArrayList<>();
         list.add(new SimpleGrantedAuthority("ROLE_USER"));
         list.add(new SimpleGrantedAuthority("ROLE_SELLER"));
+        list.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
         // 给SpringSecurity框架返回数据
+
         User user = new User(username,tbseller.getPassword(),list);
         return user;
     }

@@ -1,6 +1,9 @@
 package cn.zcw.service.impl;
 
 import cn.zcw.domain.TbGoods;
+import cn.zcw.domain.TbGoodsDesc;
+import cn.zcw.groupentity.Goods;
+import cn.zcw.mapper.TbGoodsDescMapper;
 import cn.zcw.mapper.TbGoodsMapper;
 import cn.zcw.service.GoodService;
 import com.alibaba.dubbo.config.annotation.Service;
@@ -18,8 +21,11 @@ import java.util.List;
 @Service
 @Transactional
 public class GoodServiceImpl implements GoodService {
+//    注入容器内的mapper
     @Autowired
     private TbGoodsMapper tbGoodsMapper;
+    @Autowired
+    private TbGoodsDescMapper tbGoodsDescMapper;
 
     /**
      * 查询所有
@@ -71,5 +77,24 @@ public class GoodServiceImpl implements GoodService {
             tbGoodsMapper.updateByPrimaryKey(tbGoods);
 
         }
+    }
+
+    @Override
+    public void add(Goods goods) {
+//        获取tbgoos对象
+        TbGoods tbGoods = goods.getTbGoods();
+//        设置未审批
+        tbGoods.setAuditStatus("0");
+//        设置未上架
+        tbGoods.setIsMarketable("0");
+//        保存spu
+        tbGoodsMapper.insert(tbGoods);
+//        获得sku对象
+        TbGoodsDesc tbGoodsDesc = goods.getTbGoodsDesc();
+//        设置外键依赖
+        tbGoodsDesc.setGoodsId(tbGoods.getId());
+//        保存sku
+        tbGoodsDescMapper.insert(tbGoodsDesc);
+
     }
 }

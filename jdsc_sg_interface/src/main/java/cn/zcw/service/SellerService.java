@@ -22,4 +22,6 @@ public interface SellerService {
 
     void auditing(String sellerId, String status);
 
+    void update(TbSeller seller, String sellerId);
+
 }
