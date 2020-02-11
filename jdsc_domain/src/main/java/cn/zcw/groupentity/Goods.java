@@ -4,9 +4,10 @@ import cn.zcw.domain.TbGoods;
 import cn.zcw.domain.TbGoodsDesc;
 import cn.zcw.domain.TbItem;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Goods {
+public class Goods implements Serializable {
 //    sku
     private List<TbItem>  itemList;
     //    spu
