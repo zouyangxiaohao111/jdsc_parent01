@@ -1,16 +1,21 @@
 package cn.zcw.service.impl;
 
+import cn.zcw.domain.TbSpecificationOption;
+import cn.zcw.domain.TbSpecificationOptionExample;
 import cn.zcw.domain.TbTypeTemplate;
 import cn.zcw.domain.TbTypeTemplateExample;
+import cn.zcw.mapper.TbSpecificationOptionMapper;
 import cn.zcw.mapper.TbTypeTemplateMapper;
 import cn.zcw.service.TypeTemplateService;
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 模板类型实现类
@@ -23,6 +28,8 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 //    注入mapper
     @Autowired
     private TbTypeTemplateMapper typeTemplateMapper;
+    @Autowired
+    private TbSpecificationOptionMapper tbSpecificationOptionMapper;
 
 
     @Override
@@ -96,5 +103,31 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
     @Override
     public List<TbTypeTemplate> findAll() {
         return typeTemplateMapper.selectByExample(null);
+    }
+
+    @Override
+    public List<Map> findSpecList(Long id) {
+        // 通过模板的主键查询模板对象
+        TbTypeTemplate template = typeTemplateMapper.selectByPrimaryKey(id);
+        // 获取规格冗余字段的值
+        String specIds = template.getSpecIds();
+        // 使用fastjson工具类把json字符串转换回对象
+        List<Map> list = JSON.parseArray(specIds, Map.class);
+        // 遍历集合
+        for (Map map : list) {
+            // 获取到的规格的主键值
+            String specId = map.get("id")+"";
+            // 转换成long类型
+            long sid = Long.parseLong(specId);
+            // 查询规格项的数据
+
+            TbSpecificationOptionExample example = new TbSpecificationOptionExample();
+            example.createCriteria().andSpecIdEqualTo(sid);
+            // 通过外键查询
+            List<TbSpecificationOption> options = tbSpecificationOptionMapper.selectByExample(example);
+            // 存入到map中
+            map.put("options",options);
+        }
+        return list;
     }
 }

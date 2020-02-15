@@ -4,6 +4,7 @@ import cn.zcw.domain.TbTypeTemplate;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface TypeTemplateService {
     PageInfo<TbTypeTemplate> findPage(int pageNum, int pageSize);
@@ -20,4 +21,5 @@ public interface TypeTemplateService {
 
     List<TbTypeTemplate> findAll();
 
+    List<Map> findSpecList(Long id);
 }

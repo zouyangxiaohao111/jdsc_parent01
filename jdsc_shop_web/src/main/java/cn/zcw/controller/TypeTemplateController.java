@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 //RestController=@Controller + @ResponseBody
 //接受json格式数据
@@ -90,6 +91,25 @@ public class TypeTemplateController {
 //            从注册中心调取服务
             TbTypeTemplate tbTypeTemplate = typeTemplateService.findOne(id);
             return new Result(true,"操作成功1",tbTypeTemplate);
+        } catch (Exception e) {
+            e.printStackTrace();
+//            返回前端数据
+            return new Result(false,"操作失败");
+        }
+
+    }
+    /**
+     * 获取规格
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/findSpecList/{id}")
+    public Result findSpecList(@PathVariable("id") Long id) {
+        try {
+//            从注册中心调取服务
+            List<Map> mapList= typeTemplateService.findSpecList(id);
+            return new Result(true,"操作成功",mapList);
         } catch (Exception e) {
             e.printStackTrace();
 //            返回前端数据
