@@ -15,6 +15,8 @@
         <module>jdsc_sg_service</module>
         <module>jdsc_manager_web</module>
         <module>jdsc_shop_web</module>
+        <module>jdsc_portal_web</module>
+        <module>spring_solrdata_init</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
