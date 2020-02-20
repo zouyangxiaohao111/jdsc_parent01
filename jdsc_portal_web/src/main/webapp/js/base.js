@@ -1,2 +1,2 @@
-// 定义legou模块，无分页
-var app = angular.module("legou",[]);
+// 定义jdsc模块，无分页
+var app = angular.module("jdsc",[]);
