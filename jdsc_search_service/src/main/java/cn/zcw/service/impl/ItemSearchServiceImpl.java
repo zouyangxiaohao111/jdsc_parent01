@@ -4,12 +4,18 @@ import cn.zcw.domain.TbItem;
 import cn.zcw.service.ItemSearchService;
 import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.solr.core.SolrTemplate;
 import org.springframework.data.solr.core.query.Criteria;
+import org.springframework.data.solr.core.query.GroupOptions;
 import org.springframework.data.solr.core.query.Query;
 import org.springframework.data.solr.core.query.SimpleQuery;
+import org.springframework.data.solr.core.query.result.GroupEntry;
+import org.springframework.data.solr.core.query.result.GroupPage;
+import org.springframework.data.solr.core.query.result.GroupResult;
 import org.springframework.data.solr.core.query.result.ScoredPage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +62,56 @@ public class ItemSearchServiceImpl implements ItemSearchService {
         resultMap.put("totalPage",page.getTotalPages());
         // 存储总条数
         resultMap.put("total",page.getTotalElements());
+
+        // =======================分类分组查询================================
+        List<String> categoryList = new ArrayList<>();
+        // 产生类似SQL select item_category from tb_item where item_keywords='手机' group by item_category
+        // 主查询
+        Query categoryQuery = new SimpleQuery();
+        // 添加查询条件
+        categoryQuery.addCriteria(new Criteria("item_keywords").is(keyword));
+        // 创建GroupOptions对象
+        GroupOptions groupOptions = new GroupOptions();
+        // 按业务域去分组
+        groupOptions.addGroupByField("item_category");
+        // 设置分组
+        categoryQuery.setGroupOptions(groupOptions);
+        // 分组查询
+        GroupPage<TbItem> categoryPage = solrTemplate.queryForGroupPage(categoryQuery, TbItem.class);
+        // 获取分类的组的名称
+        GroupResult<TbItem> item_category = categoryPage.getGroupResult("item_category");
+        Page<GroupEntry<TbItem>> groupEntries = item_category.getGroupEntries();
+        for (GroupEntry<TbItem> tbItemGroupEntry : groupEntries.getContent()) {
+            String value = tbItemGroupEntry.getGroupValue();
+            categoryList.add(value);
+        }
+        resultMap.put("categoryList",categoryList);
+
+
+        // =======================品牌分组查询================================
+        List<String> brandList = new ArrayList<>();
+        // 主查询
+        Query brandQuery = new SimpleQuery();
+        // 添加查询条件
+        brandQuery.addCriteria(new Criteria("item_keywords").is(keyword));
+
+        // 创建GroupOptions对象
+        GroupOptions brandGroupOptions = new GroupOptions();
+        // 按业务域去分组
+        brandGroupOptions.addGroupByField("item_brand");
+        // 设置分组
+        brandQuery.setGroupOptions(brandGroupOptions);
+
+        // 分组查询
+        GroupPage<TbItem> brandPage = solrTemplate.queryForGroupPage(brandQuery, TbItem.class);
+        // 获取分类的组的名称
+        GroupResult<TbItem> item_brand = brandPage.getGroupResult("item_brand");
+        Page<GroupEntry<TbItem>> brandGroupEntries = item_brand.getGroupEntries();
+        for (GroupEntry<TbItem> tbItemGroupEntry : brandGroupEntries.getContent()) {
+            String value = tbItemGroupEntry.getGroupValue();
+            brandList.add(value);
+        }
+        resultMap.put("brandList",brandList);
 
 
         return resultMap;
