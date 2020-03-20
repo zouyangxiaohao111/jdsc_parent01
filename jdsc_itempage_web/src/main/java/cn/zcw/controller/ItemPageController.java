@@ -45,7 +45,7 @@ public class ItemPageController {
                 Map map = new HashMap();
                 map.put("goods",goods);
                 map.put("tbItem",tbItem);
-                FileWriter fileWriter = new FileWriter(new File("C:\\Users\\Administrator\\Desktop\\pages"+tbItem.getId()+".html"));
+                FileWriter fileWriter = new FileWriter(new File("D:\\pages\\"+tbItem.getId()+".html" ) );
                 template.process(map,fileWriter);
                 fileWriter.close();
             }
@@ -73,7 +73,7 @@ public class ItemPageController {
                     Map map = new HashMap();
                     map.put("goods",goods);
                     map.put("tbItem",tbItem);
-                    FileWriter fileWriter = new FileWriter(new File("D://pages"+tbItem.getId()+".html"));
+                    FileWriter fileWriter = new FileWriter(new File("D:\\pages\\"+tbItem.getId()+".html"));
                     template.process(map,fileWriter);
                     fileWriter.close();
                 }

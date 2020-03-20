@@ -12,7 +12,7 @@ app.controller("goodsController",function($scope,$controller,$http){
     // 加载数据的方法
     $scope.reloadList = function(){
         // 分页查询
-        $http.get("../goods/findPage/"+$scope.paginationConf.currentPage+"/"+$scope.paginationConf.itemsPerPage).success(function(resp){
+        $http.get("../goods/findPage1/"+$scope.paginationConf.currentPage+"/"+$scope.paginationConf.itemsPerPage).success(function(resp){
             if(resp.success){
                 // 分页数据
                 $scope.list = resp.data;

@@ -89,6 +89,10 @@
             <artifactId>spring-security-core</artifactId>
             <version>4.1.0.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

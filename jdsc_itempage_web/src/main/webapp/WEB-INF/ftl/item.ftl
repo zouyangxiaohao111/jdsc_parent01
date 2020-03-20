@@ -76,7 +76,7 @@
         <div class="header">
             <div class="py-container">
                 <div class="yui3-g Logo">
-                    <div class="yui3-u Left logoArea">
+                    <div >
                         <a class="logo-bd" title="交大商城" href="JD-index.html" target="_blank"></a>
                     </div>
                     <div class="yui3-u Center searchArea">
