@@ -64,7 +64,7 @@ public class GoodsServiceImpl implements GoodsService{
 
         // 再保存商品的描述对象
         TbGoodsDesc tbGoodsDesc = goods.getTbGoodsDesc();
-        // 隐藏的逻辑，表的关系是一对一，主键值是相同的
+        // 表的关系是一对一，主键值是相同的
         tbGoodsDesc.setGoodsId(tbGoods.getId());
         // 保存
         tbGoodsDescMapper.insert(tbGoodsDesc);

@@ -25,9 +25,9 @@
     </mvc:annotation-driven>
 
     <!-- 引用dubbo 服务 -->
-    <dubbo:application name="legou-user-web"/>
+    <dubbo:application name="jdsc-user-web"/>
     <dubbo:registry address="zookeeper://192.168.25.130:2181"/>
-    <dubbo:annotation package="cn.tx.controller"/>
+    <dubbo:annotation package="cn.zcw.controller"/>
 
     <!--不拦截静态资源-->
     <mvc:default-servlet-handler/>

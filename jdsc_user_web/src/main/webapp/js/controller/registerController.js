@@ -8,7 +8,7 @@ app.controller("registerController",function($scope,$controller,$http){
     // 发送短信验证码
     $scope.sendCode=function(){
         // 判断手机号是否为空
-        if($scope.entity.phone=='' || $scope.entity.phone==null){
+        if($scope.entity.phone== '' || $scope.entity.phone == null){
             alert("手机号没填！");
             return;
         }
@@ -19,7 +19,7 @@ app.controller("registerController",function($scope,$controller,$http){
             return;
         }
         // 发送请求
-        $http.get("user/sendCode/"+$scope.entity.phone);
+        $http.get("../user/sendCode/"+$scope.entity.phone);
     };
 
     // 用户注册功能
@@ -29,7 +29,7 @@ app.controller("registerController",function($scope,$controller,$http){
             return;
         }
         // 用户注册
-        $http.post("user/regist/"+$scope.code,$scope.entity).success(function(resp){
+        $http.post("../user/register/"+$scope.code,$scope.entity).success(function(resp){
             if(resp.success){
                 location.href = "login.html";
             }else{
