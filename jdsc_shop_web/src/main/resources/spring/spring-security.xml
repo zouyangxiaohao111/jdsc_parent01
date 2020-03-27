@@ -13,6 +13,7 @@
 
 	<!-- 以下页面不被拦截 -->
 	<http pattern="/shoplogin.html" security="none"></http>
+	<http pattern="/cooperation.html" security="none"></http>
 	<http pattern="/shoplogin_error.html" security="none"></http>
 	<http pattern="/register.html" security="none"></http>
 	<http pattern="/seller/save" security="none"></http>

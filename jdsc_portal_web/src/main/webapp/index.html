@@ -4,6 +4,10 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Cache" content="no-cache">
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
 	<title>交大商城</title>
 
     <link rel="stylesheet" type="text/css" href="css/webbase.css" />
@@ -17,7 +21,8 @@
 
 </head>
 
-<body ng-app="jdsc" ng-controller="indexController">
+<body ng-app="jdsc" ng-controller="indexController" ng-init="initLogine2()">
+
 	<!-- 头部栏位 -->
 	<!--页面顶部-->
 <div id="nav-bottom">
@@ -27,8 +32,9 @@
 			<div class="py-container">
 				<div class="shortcut">
 					<ul class="fl">
-						<li class="f-item">交大商城欢迎您！</li>
-						<li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
+						<li class="f-item">交大商城欢迎您！{{paramMap.loginname}}</li>
+
+						<li class="f-item">请<a href="http://localhost:8088" >登录</a><span><a href="http://localhost:8088/register.html" >免费注册</a></span></li>
 					</ul>
 					<ul class="fr">
 						<li class="f-item">我的订单</li>
@@ -44,10 +50,9 @@
 						<li class="f-item" id="service">
 							<span>客户服务</span>
 							<ul class="service">
-								<li><a href="cooperation.html" target="_blank">合作招商</a></li>
-								<li><a href="shoplogin.html" target="_blank">商家后台</a></li>
-								<li><a href="cooperation.html" target="_blank">合作招商</a></li>
-								<li><a href="#">商家后台</a></li>
+								<li><a href="http://localhost:8082/register.html" target="_blank">加入我们</a></li>
+								<li><a href="http://localhost:8082/shoplogin.html" target="_blank">商家后台</a></li>
+								<li><a href="http://localhost：8081/login.html">运营商后台</a></li>
 							</ul>
 						</li>
 						<li class="f-item space"></li>
@@ -722,7 +727,7 @@
 					<li class="yui3-u-1-6">
 						<dl class="picDl tuhua">
 							<dd>
-								<a href="" class="pic"><img src="img/like_01.png" alt="" /></a>
+								<a href="#" class="pic"><img src="img/like_01.png" alt="" /></a>
 								<div class="like-text">
 									<p>捷波朗 </p>
 									<p>（jabra）BOOSI劲步</p>
@@ -760,7 +765,7 @@
 					<li class="yui3-u-1-6">
 						<dl class="picDl jilu">
 							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="img/like_03.png" alt="" /></a>
+								<a href="#" class="pic"><img src="img/like_03.png" alt="" /></a>
 								<div class="like-text">
 									<p>捷波朗 </p>
 									<p>（jabra）BOOSI劲步</p>
@@ -768,7 +773,7 @@
 								</div>
 							</dd>
 							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="img/like_02.png" alt="" /></a>
+								<a href="#" class="pic"><img src="img/like_02.png" alt="" /></a>
 								<div class="like-text">
 									<p>欧普</p>
 									<p>JYLZ08面板灯平板灯铝</p>
@@ -780,7 +785,7 @@
 					<li class="yui3-u-1-6">
 						<dl class="picDl tuhua">
 							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img src="img/like_01.png" alt="" /></a>
+								<a href="#" class="pic"><img src="img/like_01.png" alt="" /></a>
 								<div class="like-text">
 									<p>三星（G5500）</p>
 									<p>移动联通双网通</p>
@@ -788,7 +793,7 @@
 								</div>
 							</dd>
 							<dd>
-								<a href="http://sc.chinaz.com/" class="pic"><img nsrc="assets/img/like_02.png" alt="" /></a>
+								<a href="#" class="pic"><img nsrc="assets/img/like_02.png" alt="" /></a>
 								<div class="like-text">
 									<p>韩国所望紧致湿润精华露400ml</p>
 									<h3>¥896.00</h3>
@@ -1050,7 +1055,7 @@
 						</div>
 					</div>
 				</div>
-				<div id="tab2" class="tab-pane">
+				<div id="tab15" class="tab-pane">
 					<p>第二个</p>
 				</div>
 				<div id="tab9" class="tab-pane">
@@ -1219,7 +1224,7 @@
 					<li>友情链接<span class="space"></span></li>
 					<li>关于我们</li>
 				</ul>
-				<p>地址：腾讯课堂拓薪教育，网站：https://tuoxin.ke.qq.com</p>
+				<p>交大商城</p>
 			</div>
 		</div>
 	</div>
