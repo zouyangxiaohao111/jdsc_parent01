@@ -1,6 +1,9 @@
 app.controller("indexController",function($scope,$location,$http){
 
     $scope.paramMap = {"loginname":'',"brand":''};
+
+    $scope.temp=false;
+
 	// 点击搜索按钮
 	$scope.search=function(){
 		// 如果用户没有输入内容，自己指定搜索的关键字

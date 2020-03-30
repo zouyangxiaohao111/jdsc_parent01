@@ -23,8 +23,8 @@
     	    {id:${item.id?c},spec:${item.spec}},
           </#list>
         ]
-		
-		// 获取到itemId的值
+
+        // 获取到itemId的值
         // 获取到sku主键值 ?c 把数字转换成字符串
         var itemId = ${tbItem.id?c}
 		
@@ -768,7 +768,7 @@
                     <li>友情链接<span class="space"></span></li>
                     <li>关于我们</li>
                 </ul>
-                <p>地址：腾讯课堂拓薪教育，网站：https://tuoxin.ke.qq.com</p>
+                <p>交大商城</p>
             </div>
         </div>
     </div>

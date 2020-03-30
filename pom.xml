@@ -27,6 +27,9 @@
         <module>jdsc_user_interface</module>
         <module>jdsc_user_service</module>
         <module>jdsc_user_web</module>
+        <module>jdsc_cat_interface</module>
+        <module>jdsc_cat_service</module>
+        <module>jdsc_cat_web</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
