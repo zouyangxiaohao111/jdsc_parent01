@@ -81,7 +81,7 @@ public class CatServiceController {
             }
 
 
-            return new Result(true,"查询成功");
+            return new Result(true,"查询成功",cartList_username);
         }catch (Exception e){
             e.printStackTrace();
             return new Result(false,"查询失败");

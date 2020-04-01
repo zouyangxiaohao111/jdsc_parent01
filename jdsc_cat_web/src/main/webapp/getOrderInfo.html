@@ -16,30 +16,46 @@
 
 </head>
 
-<body ng-app="legou" ng-controller="orderController" ng-init="findAddressList();findCartList()">
+<body ng-app="jdsc" ng-controller="orderController" ng-init="findAddressList();findCartList()">
 
 	<!--head-->
 	<div class="top">
 		<div class="py-container">
 			<div class="shortcut">
 				<ul class="fl">
-					<li class="f-item">乐购商城欢迎您！</li>
-					<li class="f-item">请登录　<span><a href="#">免费注册</a></span></li>
+					<li class="f-item">交大商城欢迎您！</li>
+					<a href="http://localhost:8089/logout/cas"><span>退出</span></a>
+					<li class="f-item" ng-hide="tempt">
+						<span>
+							<!--跳板页-->
+							<a href="http://localhost:8089">请您登录</a>
+						</span>
+						<span>
+							<a href="http://localhost:8088/register">免费注册</a>
+						</span>
+					</li>
 				</ul>
 				<ul class="fr">
 					<li class="f-item">我的订单</li>
 					<li class="f-item space"></li>
-					<li class="f-item">我的乐购商城</li>
+					<li class="f-item">我的交大商城</li>
 					<li class="f-item space"></li>
-					<li class="f-item">乐购商城会员</li>
+					<li class="f-item">交大商城会员</li>
 					<li class="f-item space"></li>
 					<li class="f-item">企业采购</li>
 					<li class="f-item space"></li>
-					<li class="f-item">关注乐购商城</li>
+					<li class="f-item">关注交大商城</li>
 					<li class="f-item space"></li>
-					<li class="f-item">客户服务</li>
-					<li class="f-item space"></li>
-					<li class="f-item">网站导航</li>
+					<li class="f-item" id="service">
+						<span>客户服务</span>
+						<ul class="service">
+							<li><a href="http://localhost:8082/register.html" target="_blank">加入我们</a></li>
+							<li><a href="http://localhost:8082/shoplogin.html" target="_blank">商家后台</a></li>
+							<li><a href="http://localhost：8081/login.html">运营商后台</a></li>
+						</ul>
+					</li>
+					<!--<li class="f-item space"></li>-->
+					<!--<li class="f-item">网站导航</li>-->
 				</ul>
 			</div>
 		</div>
@@ -53,7 +69,7 @@
 			<div class="fr search">
 				<form class="sui-form form-inline">
 					<div class="input-append">
-						<input type="text" type="text" class="input-error input-xxlarge" placeholder="乐购商城自营" />
+						<input type="text" type="text" class="input-error input-xxlarge" placeholder="交大商城自营" />
 						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
 					</div>
 				</form>
@@ -342,8 +358,8 @@
 							<li>夺宝岛</li>
 							<li>DIY装机</li>
 							<li>延保服务</li>
-							<li>乐购商城E卡</li>
-							<li>乐购商城通信</li>
+							<li>交大商城E卡</li>
+							<li>交大商城通信</li>
 						</ul>
 					</div>
 					<div class="yui3-u-1-6">

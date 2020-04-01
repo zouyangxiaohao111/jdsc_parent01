@@ -43,7 +43,7 @@
                 <div class="shortcut">
                     <ul class="fl">
                         <li class="f-item">交大商城欢迎您！</li>
-                        <li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
+                        <li class="f-item">请<a href="http://localhost:8088" >登录</a>　<span><a href=http://localhost:8088/register.html" target="_blank">免费注册</a></span></li>
                     </ul>
                     <ul class="fr">
                         <li class="f-item">我的订单</li>
@@ -60,7 +60,7 @@
                             <span>客户服务</span>
                             <ul class="service">
                                 <li><a href="cooperation.html" target="_blank">合作招商</a></li>
-                                <li><a href="shoplogin.html" target="_blank">商家后台</a></li>
+                                <li><a href="http://localhost:8082/shoplogin.html" target="_blank">商家后台</a></li>
                                 <li><a href="cooperation.html" target="_blank">合作招商</a></li>
                                 <li><a href="#">商家后台</a></li>
                             </ul>
@@ -77,7 +77,7 @@
             <div class="py-container">
                 <div class="yui3-g Logo">
                     <div >
-                        <a class="logo-bd" title="交大商城" href="JD-index.html" target="_blank"></a>
+                        <#--<a class="logo-bd" title="交大商城" href="JD-index.html" target="_blank"></a>-->
                     </div>
                     <div class="yui3-u Center searchArea">
                         <div class="search">
@@ -106,7 +106,7 @@
                         <div class="fr shopcar">
                             <div class="show-shopcar" id="shopcar">
                                 <span class="car"></span>
-                                <a class="sui-btn btn-default btn-xlarge" href="cart.html" target="_blank">
+                                <a class="sui-btn btn-default btn-xlarge" href="http://localhost:8089/cart.html" >
                                     <span>我的购物车</span>
                                     <i class="shopnum">0</i>
                                 </a>

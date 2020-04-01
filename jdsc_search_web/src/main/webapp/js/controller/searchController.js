@@ -1,14 +1,18 @@
 app.controller("searchController",function($scope,$location,$http){
 
     // 定义对象 可以按品牌和分类查询
-    $scope.paramMap = {"keyword":'',"brand":'',"category":'',"page":1};
-
+    $scope.paramMap = {"keyword":'',"brand":'',"category":'',"page":1,"loginname":''};
+    $scope.tempt=false;
     // 页面加载，初始化的方法
     $scope.initSearch=function(){
         // 获取url上的keyword
         $scope.paramMap.keyword=$location.search()["keyword"];
+        $scope.paramMap.loginname=$location.search()["loginname"];
         // 调用查询的方法
         $scope.search();
+        if ($scope.paramMap.loginname != null||$scope.paramMap.loginname.length >=0){
+            $scope.tempt=true;
+        }
     }
 
     // 查询

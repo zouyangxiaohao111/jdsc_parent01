@@ -34,16 +34,16 @@ public class CatServiceImpl implements CatService {
     @Override
     public List<Cart> findCartList(String key) {
 //        从redis中查询数据
-        String cartList  = (String) redisTemplate.boundValueOps(key).get();
-        if (cartList == null&& cartList.isEmpty()){
-//
-            cartList="[]";
+        // 查询数据
+        String cartListStr = (String) redisTemplate.boundValueOps(key).get();
+        // 判断
+        if(cartListStr == null || cartListStr.isEmpty()){
+            // 给 cartListStr 赋值 给空数组值
+            cartListStr = "[]";
         }
-//        解析数据
-        List<Cart> carts =JSON.parseArray(cartList,Cart.class);
-
-
-        return carts;
+        // 解析该数据
+        List<Cart> cartList = JSON.parseArray(cartListStr, Cart.class);
+        return cartList;
     }
 
     /**

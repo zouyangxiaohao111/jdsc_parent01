@@ -1,9 +1,23 @@
 app.controller("cartController",function($scope,$http){
 
+    $scope.tempt=true;
+    // 点击搜索按钮
+    $scope.search=function(){
+        // 如果用户没有输入内容，自己指定搜索的关键字
+        if($scope.keyword==null || $scope.keyword==""){
+            // 设置默认值
+            $scope.keyword="小米";
+        }
+        // 跳转页面，发送请求
+        location.href="http://localhost:8084/search.html#?keyword="+$scope.keyword;
+    }
+
     // 查询
     $scope.findCartList = function(){
+
         // 查询
         $http.post("../cart/findCartList").success(function(resp){
+
             // 返回结果
             $scope.cartList = resp.data;
 
@@ -27,6 +41,7 @@ app.controller("cartController",function($scope,$http){
                 }
             }
         })
+
     }
 
     // 点击 + - 号处理

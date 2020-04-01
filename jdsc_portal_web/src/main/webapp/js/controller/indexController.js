@@ -20,6 +20,9 @@ app.controller("indexController",function($scope,$location,$http){
     $scope.initLogine2=function(){
         // 获取url上的keyword
         $scope.paramMap.loginname =$location.search()["loginname"];
+        if ($scope.paramMap.loginname != null||$scope.paramMap.loginname.length >=0){
+            $scope.tempt=true;
+        }
 
 
     }

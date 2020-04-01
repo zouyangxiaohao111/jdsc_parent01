@@ -33,8 +33,12 @@
 				<div class="shortcut">
 					<ul class="fl">
 						<li class="f-item">交大商城欢迎您！{{paramMap.loginname}}</li>
+						<a ng-show="tempt" href="http://localhost:8089/logout/cas"><span>退出</span></a>
 
-						<li class="f-item">请<a href="http://localhost:8088" >登录</a><span><a href="http://localhost:8088/register.html" >免费注册</a></span></li>
+						<li ng-hide="tempt" class="f-item">请
+							<a href="http://localhost:8088" >登录</a>
+							<span><a href="http://localhost:8088/register.html" >免费注册</a></span>
+						</li>
 					</ul>
 					<!--
 						div ng-hide="temp"   0->temp=false 1->temp=true
@@ -101,7 +105,7 @@
 						<div class="fr shopcar">
 							<div class="show-shopcar" id="shopcar">
 								<span class="car"></span>
-								<a class="sui-btn btn-default btn-xlarge" href="cart.html" target="_blank">
+								<a class="sui-btn btn-default btn-xlarge" href="http://localhost:8088/cart.html" target="_blank">
 									<span>我的购物车</span>
 									<i class="shopnum">0</i>
 								</a>

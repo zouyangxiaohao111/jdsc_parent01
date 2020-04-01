@@ -1,0 +1,24 @@
+app.controller("formC",function($scope,$controller,$http){
+
+    // controller的继承，本质就是共用一个$scope
+    $controller('baseController',{$scope:$scope});
+    // 用户注册功能
+    $scope.initLogine=function(){
+        // 发送get请求
+        $http.get("../cartIndex/findLogin").success(function(resp){
+
+            if(resp.success){
+                // 数据
+                $scope.loginname = resp.data;
+
+                location.href="http://localhost:8089/cart.html#?loginname="+$scope.loginname;
+            }else{
+                // 表示失败
+                alert(resp.message);
+            }
+        });
+
+
+    }
+
+});

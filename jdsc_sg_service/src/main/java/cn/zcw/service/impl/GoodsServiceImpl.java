@@ -52,6 +52,7 @@ public class GoodsServiceImpl implements GoodsService{
     public void add(Goods goods) {
         // 先获取到spu的对象
         TbGoods tbGoods = goods.getTbGoods();
+        tbGoods.setSellerId("ceshi");
         // 设置属性
         // 表示未上架
         tbGoods.setIsMarketable("0");
@@ -81,7 +82,7 @@ public class GoodsServiceImpl implements GoodsService{
                 // 商家的名称
                 tbItem.setSeller("ceshi");
                 // 商家的主键
-                tbItem.setSellerId(tbGoods.getSellerId());
+                tbItem.setSellerId("ceshi");
                 // 品牌的名称
                 tbItem.setBrand(brandMapper.findOne(tbGoods.getBrandId()).getName());
                 // 分类的名称

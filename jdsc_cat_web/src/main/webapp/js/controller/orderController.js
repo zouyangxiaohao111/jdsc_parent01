@@ -15,7 +15,7 @@ app.controller("orderController", function ($scope,$http) {
 
     // 查询当前登录人的所有收货地址
     $scope.findAddressList = function () {
-        $http.get("/address/findAddressList").success(function (resp) {
+        $http.get("../address/findAddressList").success(function (resp) {
             // 查询结果赋值
             $scope.addressList = resp.data;
 
