@@ -16,24 +16,24 @@
 
 </head>
 
-<body ng-app="jdsc" ng-controller="orderController" ng-init="findAddressList();findCartList()">
+<body ng-app="jdsc" ng-controller="orderController" ng-init="findAddressList();findCartList();findIndex()">
 
 	<!--head-->
 	<div class="top">
 		<div class="py-container">
 			<div class="shortcut">
 				<ul class="fl">
-					<li class="f-item">交大商城欢迎您！</li>
+					<li class="f-item">交大商城欢迎您！{{loginname}}</li>
 					<a href="http://localhost:8089/logout/cas"><span>退出</span></a>
-					<li class="f-item" ng-hide="tempt">
-						<span>
-							<!--跳板页-->
-							<a href="http://localhost:8089">请您登录</a>
-						</span>
-						<span>
-							<a href="http://localhost:8088/register">免费注册</a>
-						</span>
-					</li>
+					<!--<li class="f-item" ng-hide="tempt">-->
+						<!--<span>-->
+							<!--&lt;!&ndash;跳板页&ndash;&gt;-->
+							<!--<a href="http://localhost:8089">请您登录</a>-->
+						<!--</span>-->
+						<!--<span>-->
+							<!--<a href="http://localhost:8088/register">免费注册</a>-->
+						<!--</span>-->
+					<!--</li>-->
 				</ul>
 				<ul class="fr">
 					<li class="f-item">我的订单</li>
@@ -70,7 +70,7 @@
 				<form class="sui-form form-inline">
 					<div class="input-append">
 						<input type="text" type="text" class="input-error input-xxlarge" placeholder="交大商城自营" />
-						<button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+						<button class="sui-btn btn-xlarge btn-danger" type="button" ng-click="search()">搜索</button>
 					</div>
 				</form>
 			</div>
@@ -108,7 +108,7 @@
 						</ul>
 
 						<!--添加地址-->
-                          <div  tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade edit">
+                          <div   tabindex="-1" role="dialog" data-hasfoot="false" class="sui-modal hide fade edit">
 						  <div class="modal-dialog">
 						    <div class="modal-content">
 						      <div class="modal-header">
@@ -252,7 +252,7 @@
 			<div class="fc-receiverInfo">寄送至:{{defaultAddress.address}} 收货人：{{defaultAddress.contact}} {{defaultAddress.mobile}}</div>
 		</div>
 		<div class="submit">
-			<a class="sui-btn btn-danger btn-xlarge" ng-click="saveOrder()">提交订单</a>
+			<a class="sui-btn btn-danger btn-xlarge" ng-click="saveOrder()" >提交订单</a>
 		</div>
 	</div>
 	<!-- 底部栏位 -->
