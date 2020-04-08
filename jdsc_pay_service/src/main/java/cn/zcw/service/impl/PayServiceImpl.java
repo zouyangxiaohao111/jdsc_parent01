@@ -57,7 +57,7 @@ public class PayServiceImpl implements PayService {
         // 随机字符串
         param.put("nonce_str", WXPayUtil.generateNonceStr());
         // 商品描述
-        param.put("body", "交大商城支付");
+        param.put("body", "交大商城购物");
         // 商户订单号
         param.put("out_trade_no", orderNo);
         // 总金额（分）
@@ -70,7 +70,7 @@ public class PayServiceImpl implements PayService {
         param.put("trade_type", "NATIVE");
 
         //2.生成要发送的xml
-        String xmlParam = WXPayUtil.generateSignedXml(param, "jiaodashangchengzcw0123456789123");
+        String xmlParam = WXPayUtil.generateSignedXml(param, "txjavayingmulaoshi01234567891234");
         // 输出要发送的xml数据
         System.out.println(xmlParam);
         // 远程发送
