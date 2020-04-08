@@ -30,5 +30,7 @@
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="JedisConnectionFactory"/>
     </bean>
+    <!--生成订单id值-->
+    <bean id="idWorker" class="cn.zcw.util.IdWorker"/>
 
 </beans>

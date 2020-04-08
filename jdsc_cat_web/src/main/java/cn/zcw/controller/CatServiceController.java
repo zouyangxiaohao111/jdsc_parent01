@@ -7,6 +7,7 @@ import cn.zcw.util.CookieUtil;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -93,6 +94,8 @@ public class CatServiceController {
      * @return
      */
     @RequestMapping("/addCart/{itemId}/{num}")
+    // 解决跨域的问题  @CrossOrigin(value={"值","值","值"})
+    @CrossOrigin("http://localhost:8086")
     public Result addCart(@PathVariable("itemId") Long itemId,@PathVariable("num") int num){
         try {
 //            获取sessionId
