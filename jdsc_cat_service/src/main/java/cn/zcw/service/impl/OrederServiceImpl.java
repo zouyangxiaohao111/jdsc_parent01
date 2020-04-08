@@ -144,6 +144,12 @@ public class OrederServiceImpl implements OrderService {
 //        清除缓存
         redisTemplate.delete(tbOrder.getUserId());
     }
+
+    /**
+     * list转换String字符串
+     * @param orderIdList
+     * @return
+     */
     private String vOf(List<String> orderIdList){
         return org.apache.commons.lang.StringUtils.join(orderIdList.toArray(),",");
     }
